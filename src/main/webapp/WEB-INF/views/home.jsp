@@ -9,6 +9,7 @@
 	Hello world!  
 </h1>
 <h3><a href="./product/list">Product List</a></h3>
+<h3><a href="./member/list">Member List</a></h3>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
