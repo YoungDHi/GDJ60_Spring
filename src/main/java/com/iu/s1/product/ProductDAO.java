@@ -16,7 +16,7 @@ public class ProductDAO {
 		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
 		Connection connection = DBConnetion.getConnection();
 		
-		String sql = "SELECT PRODUCT_NUM, PRODUCT_NAME, PRODUCT_DETAIL, PRODUCT_JUMSU "
+		String sql = "SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTDETAIL, PRODUCTJUMSU "
 				+ "FROM PRODUCT";
 		
 		PreparedStatement st = connection.prepareStatement(sql);
@@ -25,10 +25,10 @@ public class ProductDAO {
 		
 		while(rs.next()) {
 			ProductDTO productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCT_NUM"));
-			productDTO.setProductName(rs.getString("PRODUCT_NAME"));
-			productDTO.setProductDetail(rs.getString("PRODUCT_DETAIL"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCT_JUMSU"));
+			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
+			productDTO.setProductName(rs.getString("PRODUCTNAME"));
+			productDTO.setProductDetail(rs.getString("PRODUCTDETAIL"));
+			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
 			ar.add(productDTO);
 		}
 		
