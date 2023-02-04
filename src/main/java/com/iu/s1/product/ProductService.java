@@ -15,4 +15,20 @@ public class ProductService {
 	public List<ProductDTO> getProductList() throws Exception {
 		return productDAO.getproductList();
 	}
+	
+	public int setProduct(ProductDTO productDTO) throws Exception {
+		
+		Long productNum = productDAO.getProductnum();
+		productDTO.setProductNum(productNum);
+		int result = productDAO.setProduct(productDTO);
+		
+		return result;
+		
+		
+	}
+	
+	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception{
+		return productDAO.getProductDetail(productDTO);
+		
+	}
 }

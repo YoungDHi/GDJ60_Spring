@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Product List</h3>
+	<h1>Product List</h1>
 	<table>
 	<thead>
 		<tr>
@@ -16,13 +16,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="list" var="dto">
+		<c:forEach items="${list}" var="dto">
 		<tr>
-			<td>${pageScope.dto.productName}</td>
+			<td><a href="./detail?productNum=${dto.productNum}">${pageScope.dto.productName}</a></td>
 			<td>${pageScope.dto.productJumsu}</td>
 		</tr>
 		</c:forEach>
 	</tbody>
 	</table>
+	<a href="./productAdd">상품등록</a>
 </body>
 </html>
