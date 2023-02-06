@@ -31,7 +31,7 @@ public class ProductDAO {
 		
 		Connection connection = DBConnection.getConnection();
 		
-		String sql = "SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL";
+		String sql = "SELECT PRODUCTNUM_SEQ.NEXTVAL FROM DUAL";
 		
 		PreparedStatement st = connection.prepareStatement(sql);
 		
@@ -63,7 +63,7 @@ public class ProductDAO {
 			productOptionDTO.setProductNum(rs.getLong("PRODUCTNUM"));
 			productOptionDTO.setOptionName(rs.getString("OPTIONNAME"));
 			productOptionDTO.setOptionPrice(rs.getInt("OPTIONPRICE"));
-			productOptionDTO.setOptionJego(rs.getInt("OPTIONJEGO"));
+			productOptionDTO.setOptionStock(rs.getInt("OPTIONSTOCK"));
 			ar.add(productOptionDTO);
 		}
 		
@@ -77,15 +77,15 @@ public class ProductDAO {
 		
 		Connection connection = DBConnection.getConnection();
 		
-		String sql = "INSERT INTO PRODUCTOPTION (OPTIONNUM, PRODUCTNUM, OPTIONNAME, OPTIONPRICE, OPTIONJEGO) "
-				+ "VALUES (OPTION_SEQ.NEXTVAL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO PRODUCTOPTION (OPTIONNUM, PRODUCTNUM, OPTIONNAME, OPTIONPRICE, OPTIONSTOCK) "
+				+ "VALUES (OPTIONNUM_SEQ.NEXTVAL, ?, ?, ?, ?)";
 		
 		PreparedStatement st = connection.prepareStatement(sql);
 		
 		st.setLong(1, productOptionDTO.getProductNum());
 		st.setString(2, productOptionDTO.getOptionName());
 		st.setInt(3, productOptionDTO.getOptionPrice());
-		st.setInt(4, productOptionDTO.getOptionJego());
+		st.setInt(4, productOptionDTO.getOptionStock());
 		
 		int result = st.executeUpdate();
 		

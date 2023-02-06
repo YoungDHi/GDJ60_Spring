@@ -6,8 +6,7 @@ public class ProductOptionDTO {
 	private Long productNum;
 	private String optionName;
 	private Integer optionPrice;
-	private Integer optionJego;
-	
+	private Integer optionStock;
 	public Long getOptionNum() {
 		return optionNum;
 	}
@@ -32,12 +31,14 @@ public class ProductOptionDTO {
 	public void setOptionPrice(Integer optionPrice) {
 		this.optionPrice = optionPrice;
 	}
-	public Integer getOptionJego() {
-		return optionJego;
+	public Integer getOptionStock() {
+		return optionStock;
 	}
-	public void setOptionJego(Integer optionJego) {
-		this.optionJego = optionJego;
+	public void setOptionStock(Integer optionStock) {
+		this.optionStock = optionStock;
 	}
+	
+	
 	
 	
 	

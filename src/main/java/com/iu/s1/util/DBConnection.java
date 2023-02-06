@@ -18,9 +18,9 @@ public class DBConnection {
 	public static Connection getConnection() throws Exception {
 		
 		//1. 연결 정보
-		String user = "USER01";
-		String password = "USER01";
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "user01";
+		String password = "user01";
+		String url = "jdbc:oracle:thin:@192.168.1.95:1521:XE";
 		String diver = "oracle.jdbc.driver.OracleDriver";
 		
 		//2. Driver를 메모리에 로딩

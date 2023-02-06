@@ -5,7 +5,7 @@
 
 <mapper namespace="com.iu.s1.product.ProductDAO">
 	<select id="getProductList" resultType="ProductDTO" statementType="PREPARED">
-		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU 
+		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTSCORE 
 		FROM PRODUCT
 		ORDER BY PRODUCTNUM DESC
 	</select>
