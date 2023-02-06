@@ -2,43 +2,42 @@ package com.iu.s1.product;
 
 public class ProductOptionDTO {
 
-	private Long option_num;
-	private Long prduct_num;
-	private String option_name;
-	private Integer option_price;
-	private Integer option_jego;
+	private Long optionNum;
+	private Long productNum;
+	private String optionName;
+	private Integer optionPrice;
+	private Integer optionJego;
 	
-	public Long getOption_num() {
-		return option_num;
+	public Long getOptionNum() {
+		return optionNum;
 	}
-	public void setOption_num(Long option_num) {
-		this.option_num = option_num;
+	public void setOptionNum(Long optionNum) {
+		this.optionNum = optionNum;
 	}
-	public Long getPrduct_num() {
-		return prduct_num;
+	public Long getProductNum() {
+		return productNum;
 	}
-	public void setPrduct_num(Long prduct_num) {
-		this.prduct_num = prduct_num;
+	public void setProductNum(Long productNum) {
+		this.productNum = productNum;
 	}
-	public String getOption_name() {
-		return option_name;
+	public String getOptionName() {
+		return optionName;
 	}
-	public void setOption_name(String option_name) {
-		this.option_name = option_name;
+	public void setOptionName(String optionName) {
+		this.optionName = optionName;
 	}
-	public Integer getOption_price() {
-		return option_price;
+	public Integer getOptionPrice() {
+		return optionPrice;
 	}
-	public void setOption_price(Integer option_price) {
-		this.option_price = option_price;
+	public void setOptionPrice(Integer optionPrice) {
+		this.optionPrice = optionPrice;
 	}
-	public Integer getOption_jego() {
-		return option_jego;
+	public Integer getOptionJego() {
+		return optionJego;
 	}
-	public void setOption_jego(Integer option_jego) {
-		this.option_jego = option_jego;
+	public void setOptionJego(Integer optionJego) {
+		this.optionJego = optionJego;
 	}
-	
 	
 	
 }
