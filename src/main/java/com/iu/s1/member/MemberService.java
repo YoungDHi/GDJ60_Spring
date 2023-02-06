@@ -12,7 +12,7 @@ public class MemberService {
 	
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		
-		int result = memberDAO.join(memberDTO);
+		int result = memberDAO.memberJoin(memberDTO);
 		
 		return result;
 		

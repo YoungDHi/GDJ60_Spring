@@ -10,7 +10,7 @@ import com.iu.s1.util.DBConnection;
 @Repository
 public class MemberDAO {
 	
-	public int join(MemberDTO memberDTO) throws Exception {
+	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
 		
 		String sql = "INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, "
