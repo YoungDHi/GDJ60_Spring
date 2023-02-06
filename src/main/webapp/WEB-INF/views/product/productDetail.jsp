@@ -11,13 +11,13 @@
 	<h1>Product Detail</h1>
 	<% ProductDTO productDTO = (ProductDTO)request.getAttribute("dto"); %>
 	
-	<h3><%= productDTO.getProduct_name() %></h3>
-	<h3><%= productDTO.getProduct_detail() %></h3>
+	<h3><%= productDTO.getProductName() %></h3>
+	<h3><%= productDTO.getProductDetail() %></h3>
 	
 	<hr>
-	<h3>${dto.product_name}</h3>
-	<h3>${dto.getProduct_detail()}</h3>
-	<h3>${dto.product_jumsu * dto.product_num}</h3>
+	<h3>${dto.productName}</h3>
+	<h3>${dto.getProductDetail()}</h3>
+	<h3>${dto.productJumsu * dto.productNum}</h3>
 	
 </body>
 </html>
