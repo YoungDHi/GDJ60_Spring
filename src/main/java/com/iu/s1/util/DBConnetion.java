@@ -11,7 +11,7 @@ public class DBConnetion {
 		
 		String user = "USER01";
 		String password = "USER01";
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String diver = "oracle.jdbc.driver.OracleDriver";
 		
 		Class.forName(diver);
