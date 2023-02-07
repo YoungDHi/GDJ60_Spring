@@ -16,8 +16,8 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.iu.s1.member.MemberDAO.";
 	
-	public int memberJoin(MemberDTO memberDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setMemberJoin", memberDTO);
 		
 		
 		

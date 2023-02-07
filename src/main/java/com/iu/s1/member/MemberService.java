@@ -10,9 +10,9 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 	
-	public int memberJoin(MemberDTO memberDTO) throws Exception {
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
 		
-		int result = memberDAO.memberJoin(memberDTO);
+		int result = memberDAO.setMemberJoin(memberDTO);
 		
 		return result;
 		

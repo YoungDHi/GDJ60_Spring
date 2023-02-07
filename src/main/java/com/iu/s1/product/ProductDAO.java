@@ -28,24 +28,7 @@ public class ProductDAO {
 	
 	//getMax
 	public Long getProductNum() throws Exception {
-		
-		Connection connection = DBConnection.getConnection();
-		
-		String sql = "SELECT PRODUCTNUM_SEQ.NEXTVAL FROM DUAL";
-		
-		PreparedStatement st = connection.prepareStatement(sql);
-		
-		ResultSet rs = st.executeQuery();
-		
-		rs.next();
-		
-		Long num = rs.getLong(1);
-		
-		DBConnection.disconnect(rs, st, connection);
-		
-		return num;
-		
-		
+		return sqlSession.selectOne(NAMESPACE+"getProductNum");
 	}
 	
 	public List<ProductOptionDTO> getOptionList() throws Exception {
@@ -106,8 +89,8 @@ public class ProductDAO {
 		return sqlSession.selectList(NAMESPACE+"getProductList");
 	}
 	
-	public int setAddProduct(ProductDTO productDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"setAddProduct", productDTO);
+	public int setProductAdd(ProductDTO productDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setProductAdd", productDTO);
 	}
 	
 	

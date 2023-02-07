@@ -2,25 +2,23 @@ package com.iu.s1.member;
 
 public class MemberDTO {
 	
-	private String memberId;
-	private String memberPassword;
+	private String id;
+	private String pw;
 	private String memberName;
-	private String memberAddress;
 	private String memberPhone;
-	private String memberEmail;
+	private String email;
 	
-	
-	public String getMemberId() {
-		return memberId;
+	public String getId() {
+		return id;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getMemberPassword() {
-		return memberPassword;
+	public String getPw() {
+		return pw;
 	}
-	public void setMemberPassword(String memberPassword) {
-		this.memberPassword = memberPassword;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 	public String getMemberName() {
 		return memberName;
@@ -28,24 +26,22 @@ public class MemberDTO {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberAddress() {
-		return memberAddress;
-	}
-	public void setMemberAddress(String memberAddress) {
-		this.memberAddress = memberAddress;
-	}
 	public String getMemberPhone() {
 		return memberPhone;
 	}
 	public void setMemberPhone(String memberPhone) {
 		this.memberPhone = memberPhone;
 	}
-	public String getMemberEmail() {
-		return memberEmail;
+	public String getEmail() {
+		return email;
 	}
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+	
+	
+	
+	
 	
 	
 

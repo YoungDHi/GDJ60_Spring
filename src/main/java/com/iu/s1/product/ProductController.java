@@ -52,12 +52,12 @@ public class ProductController {
 		return "product/productDetail";
 	}
 	@RequestMapping(value = "productAdd", method = RequestMethod.GET)
-	public void productAdd() {
+	public void setproductAdd() {
 		
 	}
 	@RequestMapping(value = "productAdd", method = RequestMethod.POST)
-	public String productAdd(ProductDTO productDTO) throws Exception{
-		int result = productService.setAddProduct(productDTO, null);
+	public String setproductAdd(ProductDTO productDTO) throws Exception{
+		int result = productService.setProductAdd(productDTO, null);
 		System.out.println(result == 1);
 		return "redirect:./list";
 	}

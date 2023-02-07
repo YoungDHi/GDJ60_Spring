@@ -22,13 +22,13 @@ public class MemberController {
 	}
 		
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
-	public void setMember() {
+	public void setMemberJoin() {
 		
 	}
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
-	public String setMember(MemberDTO memberDTO) throws Exception{
-		memberService.memberJoin(memberDTO);
+	public String setMemberJoin(MemberDTO memberDTO) throws Exception{
+		memberService.setMemberJoin(memberDTO);
 		return "redirect:./list";
 	}
 
