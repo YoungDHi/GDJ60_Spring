@@ -13,6 +13,10 @@ public class BankBookDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.iu.s1.bankBook.BankBookDAO.";
 	
+	public Long getBookNumber() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getBookNumber");
+	}
+	
 	public List<BankBookDTO> getBankBookList() throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE+"getBankBookList");

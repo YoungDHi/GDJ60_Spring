@@ -42,7 +42,7 @@ public class BankbookDAOTEST extends MyTestCase {
 		bankBookDTO.setBookName("dsdsd");
 		bankBookDTO.setBookDetail("sesese");
 		bankBookDTO.setBookRate(0.25);
-		bankBookDTO.setBookSail(5);
+		bankBookDTO.setBookSale(5);
 		int result = bankBookDAO.setBankBookAdd(bankBookDTO);
 		assertEquals(1, result);
 	}
