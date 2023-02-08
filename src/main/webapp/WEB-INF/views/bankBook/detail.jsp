@@ -20,6 +20,7 @@
 		<c:if test="${empty dto.bookNumber}">
 		<h3>message : 존재하지 않는 상품입니다.</h3>
 	</c:if>
+	<a href="./update?bookNumber=${dto.bookNumber}">상품수정</a>
 	<a href="./list">목록으로</a>
 </body>
 </html>

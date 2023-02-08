@@ -53,4 +53,19 @@ public class BankBookController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public ModelAndView setBankBookUpdate(BankBookDTO bankBookDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		bankBookDTO = bankBookService.getBankBookDetail(bankBookDTO);
+		mv.setViewName("bankBook/update");
+		mv.addObject("dto", bankBookDTO);
+		return mv;
+	}
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public ModelAndView setBankBookUpdate(BankBookDTO bankBookDTO, ModelAndView mv) throws Exception {
+		int result = bankBookService.setBankBookUpdate(bankBookDTO);
+		String view = "redirect:./detail?bookNumber="+bankBookDTO.getBookNumber().toString();
+		mv.setViewName(view);
+		return mv;
+	}
 }

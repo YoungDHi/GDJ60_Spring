@@ -7,7 +7,7 @@
   		SELECT BANKNUM_SEQ.NEXTVAL FROM DUAL
   	</select>
   	<select id="getBankBookList" resultType="com.iu.s1.bankBook.BankBookDTO">
-  		SELECT * FROM BANKBOOK
+  		SELECT * FROM BANKBOOK ORDER BY BOOKNUMBER ASC
   	</select>
   	<select id="getBankBookDetail" parameterType="com.iu.s1.bankBook.BankBookDTO" resultType="com.iu.s1.bankBook.BankBookDTO">
   		SELECT * FROM BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
@@ -20,4 +20,8 @@
  		DELETE BANKBOOK 
  		WHERE BOOKNUMBER = #{bookNumber}
  	</delete>
+ 	<update id="setBankBookUpdate" parameterType="com.iu.s1.bankBook.BankBookDTO">
+ 		UPDATE BANKBOOK SET BOOKNAME = #{bookName}, BOOKDETAIL = #{bookDetail}, BOOKRATE = #{bookRate}, BOOKSALE = #{bookSale} 
+ 		WHERE BOOKNUMBER = #{bookNumber}
+ 	</update>
   </mapper>
