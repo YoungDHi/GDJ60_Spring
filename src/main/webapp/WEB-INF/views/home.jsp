@@ -6,15 +6,20 @@
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="./resources/css/main.css">
 </head>
 <body>
 <h1>
 	Hello world!  
 </h1>
-<a href="/member/memberJoin">MemberJoin</a>
-<a href="/product/list">ProductList</a>
-<a href="/bankBook/list">BankBookList</a>
-<a href="./bankBook/list">BankBookList</a>
+<a class="a1" href="/member/memberJoin">MemberJoin</a>
+<a class="a1" href="/product/list">ProductList</a>
+<a class="a1" href="/bankBook/list">BankBookList</a>
+<a class="a1" href="./bankBook/list">BankBookList</a>
+
+<img alt="아이유사진1" src="/resources/images/iuPhoto.jpg">
+<img alt="아이유사진2" src="./resources/images/iuPhoto2.jpg">
+
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
