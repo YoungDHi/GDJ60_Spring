@@ -15,7 +15,7 @@
 	</div>
 	
 	<h3>BankBook List</h3>
-	<table class="t1" border="1">
+	<table class="tbl2">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -26,16 +26,16 @@
 		<tbody>
 			<c:forEach items="${list}" var="dto">
 			<tr>
-			<td><a href="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
-			<td>${dto.bookRate}</td>
-			<td>
-				<c:choose>
-					<c:when test="${dto.bookSale eq 1}">판매중</c:when>
-					<c:otherwise>판매중단</c:otherwise>
-				</c:choose>
-				<%-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
-				<c:if test="${dto.bookSale eq 0}">판매중지</c:if> --%>
-			</td>
+				<td><a href="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
+				<td class="tbl_td">${dto.bookRate}</td>
+				<td class="tbl_td">
+					<c:choose>
+						<c:when test="${dto.bookSale eq 1}">판매중</c:when>
+						<c:otherwise>판매중단</c:otherwise>
+					</c:choose>
+					<%-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
+					<c:if test="${dto.bookSale eq 0}">판매중지</c:if> --%>
+				</td>
 			</tr>
 			</c:forEach>			
 		</tbody>
