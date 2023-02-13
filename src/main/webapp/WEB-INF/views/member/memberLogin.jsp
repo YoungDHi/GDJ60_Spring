@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Member Login</h1>
+	<h1 class="tatle">Member Login</h1>
 </body>
 </html>

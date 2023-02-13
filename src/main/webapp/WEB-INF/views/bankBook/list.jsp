@@ -4,11 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/table.css">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<c:import url="../template/common_css.jsp"></c:import>
+	<link rel="stylesheet" href="/resources/css/table.css">
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<h1 class="tatle">BankBook List Page</h1>
 	<div class="image">
 	<img alt="아이유사진1" src="../resources/images/iuPhoto.jpg">
