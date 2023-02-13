@@ -25,5 +25,6 @@
 		<input type="text" name="email"><br>
 		<button type="submit">회원가입</button>
 	</form>
+	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

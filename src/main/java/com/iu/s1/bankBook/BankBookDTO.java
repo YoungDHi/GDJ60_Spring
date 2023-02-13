@@ -26,9 +26,15 @@ public class BankBookDTO {
 		this.bookRate = bookRate;
 	}
 	public Integer getBookSale() {
+		if(this.bookSale == null || this.bookSale != 1) {
+			bookSale = 0;
+		}
 		return bookSale;
 	}
 	public void setBookSale(Integer bookSale) {
+		if(bookSale == null || bookSale != 1) {
+			bookSale=0;
+		}
 		this.bookSale = bookSale;
 	}
 	public String getBookDetail() {
