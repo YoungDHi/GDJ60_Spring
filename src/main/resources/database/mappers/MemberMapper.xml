@@ -6,14 +6,24 @@
   	<select id="getMemberList" resultType="MemberDTO">
   		SELECT * FROM MEMBER ORDER BY MEMBERNAME ASC  	
   	</select>
-  	<insert id="setMemberJoin" parameterType="MemberDTO">
+  	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT * FROM MEMBER 
+  		WHERE ID=#{id} and PW=#{pw}
+  	</select>
+  	<insert id="setMemberAdd" parameterType="MemberDTO">
   		INSERT INTO MEMBER 
   		VALUES(#{id}, #{pw}, #{memberName}, #{memberPhone}, #{email})
   	</insert>
   	
-	<insert id="" parameterType="MemberDTO">
-		INSERT INTO MEMBER_ROLE VALUES (ID, ROLENUM)
+	<insert id="setMemberRoleAdd" parameterType="MemberDTO">
+		INSERT INTO MEMBER_ROLE (ID, ROLENUM)
 		VALUES (#{id}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
 	</insert>
+	
+	<update id="setMemberUpdate" parameterType="MemberDTO">
+		UPDATE MEMBER SET MEMBERNAME=#{memberName}, MEMBERPHONE=#{memberPhone}, EMAIL=#{email}
+		WHERE ID=#{id}
+	
+	</update>  
 	  
   </mapper>

@@ -12,7 +12,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>Member Join</h1>
-	<form action="./memberJoin" method="post">
+	<form action="./memberAdd" method="post">
 		ID : 
 		<input type="text" name="id"><br>
 		비밀번호 : 

@@ -20,7 +20,7 @@ public class MemberDAOTest extends MyTestCase {
 		memberDTO.setMemberName("so");
 		memberDTO.setMemberPhone("123.123");
 		memberDTO.setEmail("seas@asd.asd");
-		int result = memberDAO.setMemberJoin(memberDTO);
+		int result = memberDAO.setMemberAdd(memberDTO);
 		assertEquals(1, result);
 		
 	}
