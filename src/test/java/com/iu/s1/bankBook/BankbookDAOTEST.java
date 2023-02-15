@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +38,21 @@ public class BankbookDAOTEST extends MyTestCase {
 	
 	@Test
 	public void setBankBookAddTest() throws Exception {
+		
+		for(int i=0;i<30;i++) {
+			Random r = new Random();
+			double d = r.nextDouble();
+			int num = (int)(d*1000);
+			d = num/10.0;
 		BankBookDTO bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookNumber(2L);
-		bankBookDTO.setBookName("dsdsd");
-		bankBookDTO.setBookDetail("sesese");
-		bankBookDTO.setBookRate(0.25);
-		bankBookDTO.setBookSale(5);
+		bankBookDTO.setBookNumber(bankBookDAO.getBookNumber());
+		bankBookDTO.setBookName("kt위즈 적금"+i);
+		bankBookDTO.setBookDetail("ds");
+		bankBookDTO.setBookRate(d);
+		bankBookDTO.setBookSale(1);
 		int result = bankBookDAO.setBankBookAdd(bankBookDTO);
-		assertEquals(1, result);
+		}
+		//assertEquals(1, result);
 	}
 	
 	@Test

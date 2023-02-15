@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.util.Pagination;
+
 @Controller
 @RequestMapping(value = "/product/*")
 public class ProductController {
@@ -21,11 +23,11 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping(value = "list")
-	public ModelAndView getProductList(ModelAndView mv) throws Exception {
-		//ModelAndView mv = new ModelAndView();
+	public ModelAndView getProductList(Pagination pagination) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
 		
-		List<ProductDTO> ar = productService.getProductList();
+		List<ProductDTO> ar = productService.getProductList(pagination);
 		
 		System.out.println(ar.size()>0);
 		mv.setViewName("product/productList");

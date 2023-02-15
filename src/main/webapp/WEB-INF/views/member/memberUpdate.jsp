@@ -21,11 +21,11 @@
 				<!-- 비밀번호 : 
 				<input type="text" name="pw"><br> -->
 				이름 : 
-				<input type="text" name="memberName" value="${member.memberName}"><br>
+				<input type="text" name="memberName" value="${dto.memberName}"><br>
 				전화번호 :
-				<input type="text" name="memberPhone" value="${member.memberPhone}"><br>
+				<input type="text" name="memberPhone" value="${dto.memberPhone}"><br>
 				Email :
-				<input type="text" name="email" value="${member.email}"><br>
+				<input type="text" name="email" value="${dto.email}"><br>
 				<button type="submit">정보 수정</button>
 			</form>
 		</div>

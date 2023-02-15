@@ -17,9 +17,9 @@
 		
 		<div class="row justify-content-center">
 		<div class="col-4">
-			<h3>Name : ${member.memberName}</h3>
-			<h3>Phone : ${member.memberPhone}</h3>
-			<h3>Email : ${member.email}</h3>
+			<h3>Name : ${dto.memberName}</h3>
+			<h3>Phone : ${dto.memberPhone}</h3>
+			<h3>Email : ${dto.email}</h3>
 			<a href="./memberUpdate" class="btn btn-dark">정보 수정</a>
 		</div>
 		</div>

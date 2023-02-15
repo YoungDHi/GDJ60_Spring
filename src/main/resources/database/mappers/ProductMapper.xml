@@ -7,13 +7,20 @@
 	<select id="getProductNum" resultType="Long">
 		SELECT PRODUCTNUM_SEQ.NEXTVAL FROM DUAL
 	</select>
-	<select id="getProductList" resultType="ProductDTO" statementType="PREPARED">
-		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTSCORE 
-		FROM PRODUCT
-		ORDER BY PRODUCTNUM DESC
+	<select id="getProductList" parameterType="Pagination" resultType="ProductDTO">
+		SELECT * FROM(
+			SELECT ROWNUM R, B.* FROM(
+				SELECT * FROM PRODUCT
+				ORDER BY PRODUCTNUM DESC
+			) B
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO">
 		SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
+	</select>
+	<select id="getProductCount" resultType="long">
+		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
 	</select>
 
 	<insert id="setProductAdd" parameterType="ProductDTO">

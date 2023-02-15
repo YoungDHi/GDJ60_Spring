@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.util.DBConnection;
+import com.iu.s1.util.Pagination;
 
 @Repository
 public class ProductDAO {
@@ -20,6 +21,10 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s1.product.ProductDAO.";
+	
+	public Long getProductCount() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getProductCount");
+	}
 	
 	//delete
 	public int setProductDelete(Long productNum) throws Exception {
@@ -85,8 +90,8 @@ public class ProductDAO {
 	}
 	
 	//return은 Arraylist의 부모형 List로 해두는 것이 좋음
-	public List<ProductDTO> getProductList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getProductList");
+	public List<ProductDTO> getProductList(Pagination pagination) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getProductList", pagination);
 	}
 	
 	public int setProductAdd(ProductDTO productDTO) throws Exception{
