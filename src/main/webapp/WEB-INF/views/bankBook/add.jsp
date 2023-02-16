@@ -15,7 +15,7 @@
 		<h1 class="col-md-7 mx-auto text-center border-bottom border-dark pb-4">Product Add Page</h1>
 	</div>
 	<div class="row justify-content-center">
-	<form class="col-md-7" action="./add" method="post">
+	<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 		<div class="mb-3">
 			<label for="bookName" class="form-label">상품명</label>
 			<input name="bookName" type="text" class="form-control" id="bookName" placeholder="제품명을 입력해주세요.">
@@ -31,7 +31,7 @@
 		
 		<div class="mb-3">
   			<label for="files" class="form-label">Image</label>
- 			<input type="file" class="form-congtrol" id="files" name="pic">
+ 			<input type="file" class="form-control" id="files" name="pic">
 
 		</div>
 		

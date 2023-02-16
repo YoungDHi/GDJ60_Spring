@@ -50,6 +50,9 @@
   		
   	</select>
  	<insert id="setBankBookAdd" parameterType="BankBookDTO">
+ 		<selectKey keyProperty="bookNumber" resultType="Long" order="BEFORE">
+ 			SELECT BANKNUM_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
  		INSERT INTO BANKBOOK 
  		VALUES (#{bookNumber}, #{bookName}, #{bookRate}, #{bookSale}, #{bookDetail})
  	</insert>
@@ -61,4 +64,13 @@
  		UPDATE BANKBOOK SET BOOKNAME = #{bookName}, BOOKDETAIL = #{bookDetail}, BOOKRATE = #{bookRate}, BOOKSALE = #{bookSale} 
  		WHERE BOOKNUMBER = #{bookNumber}
  	</update>
+ 	
+ 	<insert id="setBankBookImgAdd" parameterType="BankBookImgDTO">
+ 		INSERT INTO BANKBOOKIMG
+ 		VALUES (BANKNUM_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{bookNumber})
+ 	
+ 	</insert>
+ 	
+ 	
+ 	
   </mapper>
