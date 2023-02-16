@@ -14,6 +14,18 @@ public class Pagination {
 	//table에서 조회할 끝번호
 	private Long lastRow;
 	
+	//page의 시작 번호
+	private Long startNum;
+	
+	//page의 끝 번호
+	private Long lastNum;
+	
+	//마지막 블럭이 perBlock일때
+	private boolean after;
+	
+	//첫 블럭이 perBlocl일때
+	private boolean before;
+	
 	//startRow, lastRow 계산하는 메서드
 	public void makeRow() {
 		
@@ -21,8 +33,85 @@ public class Pagination {
 		this.lastRow = this.getPage()*this.getPerPage();
 		
 	}
+	
+	//startNum, lastNum 계산하는 메서드
+	public void makeNum(Long totalCount) {
+		//1. 전체 row의 갯수 구하기
+		//2. 전체 page의 갯수 구하기
+		Long totalPage = totalCount/this.getPerPage();
+		if(totalCount%this.getPerPage()!=0) {
+			totalPage++;
+		}
+		if(this.getPage()>totalPage) {
+			this.setPage(totalPage);
+		}
+		//3. 한 블럭에 출력할 번호의 갯수
+		Long perBlock = 5L;
+		
+		//4. 총 블럭의 수 구하기
+		Long totalBlock = totalPage/perBlock;
+		if(totalPage%perBlock !=0) {
+			totalPage++;
+		}
+		//5. page 번호로 현재 블럭 번호 구하기
+		Long curBlock = this.getPage()/perBlock;
+		if(this.getPage()%perBlock !=0) {
+			curBlock++;
+		}
+		//6. page의 시작번호와 끝번호를 계산
+		this.startNum = (curBlock-1)*perBlock+1;
+		this.lastNum = curBlock*perBlock;
+		
+	
+		if(curBlock==totalBlock) {
+			lastNum=totalPage;
+			this.after=true;
+		}
+		
+		if(curBlock==1) {
+			this.before=true;
+		}
+		
+	}
+	
+	
+	public Long getStartNum() {
+		return startNum;
+	}
+
+	public void setStartNum(Long startNum) {
+		this.startNum = startNum;
+	}
+
+	public Long getLastNum() {
+		return lastNum;
+	}
+
+	public void setLastNum(Long lastNum) {
+		this.lastNum = lastNum;
+	}
+
+	public boolean isAfter() {
+		return after;
+	}
+
+	public void setAfter(boolean after) {
+		this.after = after;
+	}
+
+	public boolean isBefore() {
+		return before;
+	}
+
+	public void setBefore(boolean before) {
+		this.before = before;
+	}
+
 
 	public Long getPerPage() {
+		if(this.perPage==null||this.perPage<1) {
+			this.perPage=5L;
+		}
 		return perPage;
 	}
 
@@ -31,6 +120,9 @@ public class Pagination {
 	}
 
 	public Long getPage() {
+		if(this.page==null || this.page<1) {
+			this.page=1L;
+		}
 		return page;
 	}
 

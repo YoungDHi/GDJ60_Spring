@@ -29,6 +29,12 @@
  			<textarea name="bookDetail" class="form-control" id="bookDetail" rows="7" placeholder="상세정보를 입력해주세요."></textarea>
 		</div>
 		
+		<div class="mb-3">
+  			<label for="files" class="form-label">Image</label>
+ 			<input type="file" class="form-congtrol" id="files" name="pic">
+
+		</div>
+		
 		<!-- <div class="form-check">
 		  <input class="form-check-input" type="radio" name="bookSale" checked value="1" id="bookSale1">
 		  <label class="form-check-label" for="bookSale1">

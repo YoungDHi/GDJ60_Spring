@@ -2,8 +2,38 @@ package com.iu.s1.util;
 
 public class Pager {
 	
+	//검색종류(사용할 colunm)
+	private String kind;
+	//검색어
+	private String search;
+	
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(this.search==null) {
+			search="";
+		}
+		return search; //"%"+search+"%";
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	//한페이지에 출력할 Row의 갯수
 	private Long perPage;
+	
+	//한블럭당 출력할 번호의 갯수
+	private Long perBlock;
+	
+	//전체 page 갯수
+	private Long totalPage;
+	
 	//Client가 보고싶은 페이지 번호(parameter)
 	private Long page;
 	
@@ -32,7 +62,7 @@ public class Pager {
 	public void makeNum(Long totalCount) {
 		//1. 전체 row의 갯수 구해기
 		//2. 총 page의 갯수 구하기
-		Long totalPage = totalCount/this.getPerPage();
+		this.totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage()!=0) {
 			//totalpage = totalpage+1;
 			//totalpage+=1;
@@ -42,24 +72,24 @@ public class Pager {
 			this.setPage(totalPage);
 		}
 		//3. 한 블럭에 출력할 번호의 갯수
-		Long perBlock = 5L;
+		
 		
 		//4. 총 블럭의 수 구하기
-		Long totalBlock = totalPage/perBlock;
-		if(totalPage % perBlock !=0) {
+		Long totalBlock = totalPage/this.getPerBlock();
+		if(totalPage % getPerBlock() !=0) {
 			totalBlock++;
 		}
 		//5. page 번호로 현재 블럭 번호 구하기
 		//page가 1-5 curblock = 1
 		//page가 6-10 curblock = 2
 		//page가 11-15 curblock = 3
-		Long curBlock = this.getPage() /perBlock;
-		if (this.getPage() % perBlock != 0) {
+		Long curBlock = this.getPage() /this.getPerBlock();
+		if (this.getPage() % this.getPerBlock() != 0) {
 			curBlock++;
 		}
 		//6. curBlock의 시작번호와 끝번호를 계산
-		this.startNum = (curBlock-1)*perBlock+1;
-		this.lastNum = curBlock*perBlock;
+		this.startNum = (curBlock-1)*this.getPerBlock()+1;
+		this.lastNum = curBlock*this.getPerBlock();
 		
 		this.after=true;
 		if(curBlock==totalBlock) {
@@ -73,6 +103,21 @@ public class Pager {
 		
 	}
 	
+	public Long getTotalPage() {
+		return totalPage;
+	}
+
+	public Long getPerBlock() {
+		if(this.perBlock==null || this.perBlock<1) {
+			this.perBlock=5L;
+		}
+		return perBlock;
+	}
+
+	public void setPerBlock(Long perBlock) {
+		this.perBlock = perBlock;
+	}
+
 	public boolean isBefore() {
 		return before;
 	}

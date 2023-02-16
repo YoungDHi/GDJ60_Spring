@@ -44,8 +44,8 @@ public class BankBookDAO {
 		return sqlSession.delete(NAMESPACE+"setBankBookDelete", bankBookDTO);
 	}
 	
-	public Long getBankbookCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getBankbookCount");
+	public Long getBankbookCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getBankbookCount", pager);
 	}
 	
 }

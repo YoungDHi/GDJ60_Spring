@@ -32,8 +32,30 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="row">
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination">
+					    <li class="page-item ${pagination.before ? 'disabled':''}">
+					      <a class="page-link" href="./list?page=${pagination.startNum-1}" aria-label="Previous">
+					        <span aria-hidden="true">&lsaquo;</span>
+					      </a>
+					    </li>
+					    <c:forEach begin="${pagination.startNum }" end="${pagination.lastNum}" var="i">
+					    	<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+					    </c:forEach>
+					    <li class="page-item ${pagination.after ? 'disabled' : ''}">
+					      <a class="page-link" href="./list?page=${pagination.lastNum+1}"  aria-label="Next">
+					        <span aria-hidden="true">&rsaquo;</span>
+					      </a>
+					    </li>
+					  </ul>
+					</nav>
+					
+				</div>
 	</div>
-		<a class="btn btn-danger" href="./productAdd">상품등록</a>
+		<div class="row md-7 col-md-7 mx-auto">
+		<a class="btn btn-danger col-2" href="./productAdd">상품등록</a>
+		</div>
 	</div>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>

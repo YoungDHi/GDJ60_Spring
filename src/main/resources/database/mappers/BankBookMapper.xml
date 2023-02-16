@@ -3,24 +3,51 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.iu.s1.bankBook.BankBookDAO">
+  	<sql id="searchCondition">
+	  	<if test="kind == 'contents'">
+	  			WHERE BOOKDETAIL LIKE '%' || #{search} || '%'
+	  		</if>
+	  		<if test="kind == 'title'">
+	  			WHERE BOOKNAME LIKE '%' || #{search} || '%'
+	  		</if>
+  	</sql>
+  	<sql id="searchCondition2">
+  		 WHERE 
+			<choose>	
+				<when test="kind == 'contents'">
+					BOOKDETAIL
+				</when>
+				<otherwise>
+					BOOKNAME
+				</otherwise>
+			</choose> 
+					
+					LIKE '%' || #{search} || '%'
+   
+  	</sql>
+  
   	<select id="getBookNumber" resultType="long">
   		SELECT BANKNUM_SEQ.NEXTVAL FROM DUAL
   	</select>
   	<select id="getBankBookList" parameterType="Pager" resultType="BankbookDTO">
   		SELECT * FROM (
   			SELECT ROWNUM R, B.* FROM (
-				SELECT * FROM BANKBOOK 
+				SELECT * FROM BANKBOOK
+				<include refid="searchCondition2"></include>
+				
+				
 				ORDER BY BOOKNUMBER DESC
-			) 
-			B
+			) B
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
   		SELECT * FROM BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
   	</select>
-  	<select id="getBankbookCount" resultType="long">
+  	<select id="getBankbookCount" resultType="long" parameterType="pager">
   		SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
+  			<include refid="searchCondition"></include>
+  		
   	</select>
  	<insert id="setBankBookAdd" parameterType="BankBookDTO">
  		INSERT INTO BANKBOOK 

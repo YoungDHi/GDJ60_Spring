@@ -21,7 +21,10 @@ public class ProductService {
 	
 	public List<ProductDTO> getProductList(Pagination pagination) throws Exception{
 		
+		pagination.makeRow();
 		Long totalCount = productDAO.getProductCount();//20
+		
+		pagination.makeNum(totalCount);
 		
 		return productDAO.getProductList(pagination);
 	}

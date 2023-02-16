@@ -22,9 +22,6 @@ public class ProductDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s1.product.ProductDAO.";
 	
-	public Long getProductCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getProductCount");
-	}
 	
 	//delete
 	public int setProductDelete(Long productNum) throws Exception {
@@ -92,6 +89,10 @@ public class ProductDAO {
 	//return은 Arraylist의 부모형 List로 해두는 것이 좋음
 	public List<ProductDTO> getProductList(Pagination pagination) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getProductList", pagination);
+	}
+	
+	public Long getProductCount() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getProductCount");
 	}
 	
 	public int setProductAdd(ProductDTO productDTO) throws Exception{

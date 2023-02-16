@@ -29,9 +29,10 @@ public class ProductController {
 		
 		List<ProductDTO> ar = productService.getProductList(pagination);
 		
-		System.out.println(ar.size()>0);
+		
 		mv.setViewName("product/productList");
 		mv.addObject("list", ar);
+		mv.addObject("pagination", pagination);
 		
 		
 		return mv;
