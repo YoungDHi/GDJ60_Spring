@@ -41,19 +41,22 @@ public class BankBookService {
 	
 	public int setBankBookAdd(BankBookDTO bankBookDTO, MultipartFile pic) throws Exception {
 		int result =  bankBookDAO.setBankBookAdd(bankBookDTO);
-		bankBookDTO.getBookNumber();
-		//1. file을 HDD에 저장
-		// Project 경로가 아닌 os가 이용하는 경로
-		String realPath = servletContext.getRealPath("resources/upload/bankBook");
-		System.out.println(realPath);
-		String filename = fileManager.fileSave(pic, realPath);
-		//2 DB에 저장
-		BankBookImgDTO bankBookImgDTO = new BankBookImgDTO();
-		bankBookImgDTO.setFileName(filename);
-		bankBookImgDTO.setOriName(pic.getOriginalFilename());
-		bankBookImgDTO.setBookNumber(bankBookDTO.getBookNumber());
+	
 		
-		
+		if(!pic.isEmpty()) { //pic.getSize()!=0
+			//1. file을 HDD에 저장
+			// Project 경로가 아닌 os가 이용하는 경로
+			String realPath = servletContext.getRealPath("resources/upload/bankBook");
+			System.out.println(realPath);
+			String filename = fileManager.fileSave(pic, realPath);
+			//2 DB에 저장
+			BankBookImgDTO bankBookImgDTO = new BankBookImgDTO();
+			bankBookImgDTO.setFileName(filename);
+			bankBookImgDTO.setOriName(pic.getOriginalFilename());
+			bankBookImgDTO.setBookNumber(bankBookDTO.getBookNumber());
+			
+			result = bankBookDAO.setBankBookImgAdd(bankBookImgDTO);
+		}
 		
 		return result;
 	}
