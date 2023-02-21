@@ -67,7 +67,7 @@
   		<!-- 1:N -->
   		<!-- <collection property=""></collection> -->
   	</resultMap>
-  	<select id="getBankbookCount" resultType="long" parameterType="pager">
+  	<select id="getBankbookCount" resultType="Long" parameterType="pager">
   		SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
   			<include refid="searchCondition"></include>
   		
