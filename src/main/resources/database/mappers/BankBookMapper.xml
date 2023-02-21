@@ -26,7 +26,7 @@
    
   	</sql>
   
-  	<select id="getBookNumber" resultType="long">
+  	<select id="getBookNumber" resultType="Long">
   		SELECT BANKNUM_SEQ.NEXTVAL FROM DUAL
   	</select>
   	<select id="getBankBookList" parameterType="Pager" resultType="BankbookDTO">
