@@ -40,7 +40,7 @@ public class FileManager {
 		//multipartFile.transferTo(file);
 		
 		//2) Spring API FileCopyUtis 객체의 copy메서드 사용
-		FileCopyUtils.copy(multipartFile.getBytes(), file);
+		//FileCopyUtils.copy(multipartFile.getBytes(), file);
 		
 		return name;
 		
