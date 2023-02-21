@@ -29,11 +29,15 @@ let checks = [false,false,false,false];
 //ID 검증
 id.addEventListener("blur",function(){
      if(id.value.length !=0){
-        idResult.innerHTML='';
+        idResult.innerHTML='정상적인 ID';
+        idResult.classList.add('blueResult');
+        idResult.classList.remove('redResult');
         //idCheck=true;
         checks[0]=true;
         }else{
         idResult.innerHTML="ID는 필수사항입니다";
+        idResult.classList.add('redResult');
+        idResult.classList.remove('blueResult')
         checks[0]=false;
     }
 });
@@ -42,10 +46,12 @@ id.addEventListener("blur",function(){
 pw.addEventListener("keyup", function(){
     if(pw.value.length>5 && pw.value.length<13){
         pwResult.innerHTML="정상 비번"
+        pwResult.classList.toggle('blueResult');
         //pwLengthCheck=true;
         checks[1]=true;
     }else{
         pwResult.innerHTML="비번은 6글자이상 13글자 이하여야합니다."
+        pwResult.classList.toggle('redResult');
         checks[1]=false;
     }
 });
