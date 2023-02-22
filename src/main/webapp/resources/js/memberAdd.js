@@ -24,7 +24,7 @@ const btn = document.getElementById("btn");
 // let pwLengthCheck=false;
 // let pwNullCheck=false;
 // let pwEqualCheck=false;
-let checks = [false,false,false,false];
+let checks = [false,false,false,false,false,false,false];
 
 //ID 검증
 id.addEventListener("blur",function(){
@@ -46,12 +46,14 @@ id.addEventListener("blur",function(){
 pw.addEventListener("keyup", function(){
     if(pw.value.length>5 && pw.value.length<13){
         pwResult.innerHTML="정상 비번"
-        pwResult.classList.toggle('blueResult');
+        pwResult.classList.add("blueResult")
+        pwResult.classList.replace('redResult','blueResult');
         //pwLengthCheck=true;
         checks[1]=true;
     }else{
         pwResult.innerHTML="비번은 6글자이상 13글자 이하여야합니다."
-        pwResult.classList.toggle('redResult');
+        pwResult.classList.add("redResult")
+        pwResult.classList.replace('blueResult','redResult');
         checks[1]=false;
     }
 });
@@ -59,9 +61,11 @@ pw.addEventListener("keyup", function(){
 pw.addEventListener("blur",function(){
     if(pw.value!=''){
         //pwNullCheck=true;
+
         checks[2]=true;
     }else{
         pwResult.innerHTML="비밀번호는 필수사항입니다";
+        pwResult.classList.add('redResult')
         checks[2]=false;
    }
 });
@@ -76,10 +80,12 @@ pw.addEventListener("change",function(){
 pwCheck.addEventListener("blur", function(){
     if(pw.value==pwCheck.value){
         pwCheckResult.innerHTML="동일한 PW"
+        
         //pwEqualCheck=true;
         checks[3]=true;
     }else{
         pwCheckResult.innerHTML="동일한 비밀번호를 입력해주세요"
+        
         checks[3]=false;
     }
 
@@ -91,8 +97,10 @@ pwCheck.addEventListener("blur", function(){
 userName.addEventListener("blur",function(){
     if(userName.value.length!=0){
         userNameResult.innerHTML='';
+        checks[4]=true;
     }else{
         userNameResult.innerHTML="이름은 필수사항입니다";
+        checks[4]=false;
    }
 });
 
@@ -100,8 +108,10 @@ userName.addEventListener("blur",function(){
 phone.addEventListener("blur",function(){
     if(phone.value.length!=0){
         phoneResult.innerHTML='';
+        checks[5]=true;
     }else{
         phoneResult.innerHTML="전화번호는 필수사항입니다";
+        check[5]=false;
    }
 });
 
@@ -109,8 +119,10 @@ phone.addEventListener("blur",function(){
 email.addEventListener("blur",function(){
     if(email.value.length!=0){
         emailResult.innerHTML='';
+        checks[6]=true;
     }else{
         emailResult.innerHTML="Email은 필수사항입니다";
+        checks[6]=true;
    }
 });
 

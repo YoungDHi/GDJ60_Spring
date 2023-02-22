@@ -29,12 +29,13 @@
  			<textarea name="bookDetail" class="form-control" id="bookDetail" rows="7" placeholder="상세정보를 입력해주세요."></textarea>
 		</div>
 		
-		<div class="mb-3">
-  			<label for="files" class="form-label">Image</label>
- 			<input type="file" class="form-congtrol" id="files" name="pic">
-
+		<div id="fileList">
+			<!-- <div class="mb-3">
+				<label for="files" class="form-label">Image</label>
+				<input type="file" class="form-control" id="files" name="pic">
+			</div> -->
+			<button type="button" id="fileAdd">ADD</button>
 		</div>
-		
 		<!-- <div class="form-check">
 		  <input class="form-check-input" type="radio" name="bookSale" checked value="1" id="bookSale1">
 		  <label class="form-check-label" for="bookSale1">
@@ -56,8 +57,13 @@
 			<button class="btn btn-secondary" type="submit">상품등록</button>
 		</div>
 	</form>
-	</div>
 </div>
+</div>
+<script src="../resources/js/fileManager.js"></script>
+<script>
+	setMax(3);
+	setParam('pic');
+</script>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
