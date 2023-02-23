@@ -2,6 +2,15 @@ package com.iu.s1.util;
 
 public class Pager {
 	
+	private Long bookNumber;
+	
+	public Long getBookNumber() {
+		return bookNumber;
+	}
+
+	public void setBookNumber(Long bookNumber) {
+		this.bookNumber = bookNumber;
+	}
 	//검색종류(사용할 colunm)
 	private String kind;
 	//검색어
