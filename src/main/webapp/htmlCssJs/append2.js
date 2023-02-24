@@ -29,11 +29,12 @@ add.addEventListener('click', function(){
 
     //button
     let n = document.createTextNode('DELETE');
+    btn.appendChild(n);
+
     let attr = document.createAttribute('class');
     attr.value='dels';
-    
     btn.setAttributeNode(attr);
-    btn.appendChild(n);
+    
     
     attr = document.createAttribute('data-idx-num');
     attr.value=idx;

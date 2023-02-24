@@ -15,9 +15,13 @@ function setMax(m){
 }
 
 fileList.addEventListener('click',function(e){
+    
     if(e.target.classList.contains('dels')){
-        let id = 'del' + e.target.getattribute('data-button-idx');
-        console.log(id);
+        let id = 'del' + e.target.getAttribute('data-button-idx')
+        
+        
+        document.getElementById(id).remove();
+        console.log('delete',id)
     }
     
 
