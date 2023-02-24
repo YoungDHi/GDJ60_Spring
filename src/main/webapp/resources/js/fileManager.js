@@ -1,6 +1,7 @@
 //FileManager
 const fileAdd=document.getElementById('fileAdd');
 const fileList=document.getElementById('fileList');
+const dels = document.getElementsByClassName('dels');
 
 let count = 0;
 let max=1;
@@ -13,6 +14,15 @@ function setMax(m){
     max=m;
 }
 
+fileList.addEventListener('click',function(e){
+    if(e.target.classList.contains('dels')){
+        let id = 'del' + e.target.getattribute('data-button-idx');
+        console.log(id);
+    }
+    
+
+})
+
 fileAdd.addEventListener('click', function(){
     
     if(count>=max){
@@ -20,24 +30,32 @@ fileAdd.addEventListener('click', function(){
         return;
     }
 
-    count++;
+    
 
-    console.log('click')
+    
     //Element, text 들을 생성
     let div = document.createElement('div');//부모 DIV
     let label = document.createElement('label');//label
     let text = document.createTextNode('Image');
     let inptut = document.createElement('input');//input
+    let btn = document.createElement('button');//button
 
     //Element들을 조합
     div.appendChild(label);
     div.appendChild(inptut);
+    div.appendChild(btn);
     label.appendChild(text);
+    text = document.createTextNode('X');
+    btn.appendChild(text);
 
     //attribute 생성 적용
     //div
     let attr = document.createAttribute('class');
     attr.value='mb-3';
+    div.setAttributeNode(attr);
+    
+    attr = document.createAttribute('id')
+    attr.value = 'del'+count;
     div.setAttributeNode(attr);
 
     //label
@@ -64,11 +82,31 @@ fileAdd.addEventListener('click', function(){
     inptut.setAttributeNode(attr);
 
     attr = document.createAttribute('name');
-    attr.value='param';
+    attr.value='files';
     inptut.setAttributeNode(attr);
+
+    //button
+    attr = document.createAttribute('type');
+    attr.value='button';
+    btn.setAttributeNode(attr);
+
+    attr = document.createAttribute('class');
+    attr.value = 'dels';
+    btn.setAttributeNode(attr);
+
+    attr = document.createAttribute('data-button-idx');
+    attr.value=count;
+    btn.setAttributeNode(attr);
+
+
 
     fileList.prepend(div);
     check=true;
-    
+
+    count++;
     
 });
+
+
+
+

@@ -13,6 +13,9 @@
 <c:import url="../template/header.jsp"></c:import>
 	<div class="container-fluid">
 		<div class="row">
+		<div class="row my-5">
+			<h1>${boardName} List</h1>
+		</div>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -23,7 +26,13 @@
 					<c:forEach items="${list}" var="dto">
 						<tr>
 							<td>${dto.num}</td>
-							<td><a href="./detail">${dto.title}</a></td>
+							<td>
+							<c:catch>
+							<!-- Notice에는 depth가 없어서 Exception이 발생 -->
+							<!-- Exception 처리 -->
+							<c:forEach begin="1" end="${dto.depth}">ㄴ</c:forEach>
+							</c:catch>
+							<a href="./detail?num=${dto.num}">${dto.title}</a></td>
 							<td>${dto.writer}</td>
 							<td>${dto.regDate}</td>
 							<td>${dto.hit}</td>
@@ -87,7 +96,11 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<div class="row">
+		<a href="./add" class="btn btn-primary">글작성</a>
+	</div>
+	
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="../resources/js/pageing.js"></script>
 </body>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.s1.MyTestCase;
 import com.iu.s1.board.notice.NoticeDAO;
+import com.iu.s1.board.notice.NoticeDTO;
 import com.iu.s1.util.Pager;
 
 public class NoticeDAOTest extends MyTestCase {
@@ -22,7 +23,15 @@ public class NoticeDAOTest extends MyTestCase {
 		//long count = noticeDAO.getTotalCount(pager);
 		
 		assertNotEquals(0, pager);
-		
+	}
+	
+	public void setBoardAdd() throws Exception {
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setTitle("Title1");
+		noticeDTO.setWriter("Young");
+		noticeDTO.setContents("Contents1");
+		int result = noticeDAO.setBoardAdd(noticeDTO);
+		assertEquals(1, result);
 	}
 
 }

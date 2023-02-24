@@ -18,6 +18,9 @@
  	 		</if>	
   		</where>
   	</sql>
+  	
+  
+  	
   	<!-- 전체 갯수 -->
   	<select id="getTotalCount" resultType="Long" parameterType="Pager">
   		SELECT COUNT(NUM) FROM QNA
@@ -28,12 +31,35 @@
   	<select id="getBoardList" resultType="QnaDTO" parameterType="Pager">
   		SELECT * FROM (
 			SELECT ROWNUM R, Q.* FROM (
-				SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM QNA
+				SELECT NUM, TITLE, WRITER, REGDATE, HIT, DEPTH FROM QNA
 				<include refid="qnaCondition"></include>
-				ORDER BY NUM DESC
+				ORDER BY REF DESC, STEP ASC
 			) Q
 		) WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
+  	
+  	<!-- detail 출력 -->
+  	<select id="getBoardDetail" resultType="QnaDTO" parameterType="BoardDTO">
+  		SELECT * FROM QNA WHERE NUM = #{num}
+  	</select>
+  	
+  	<insert id="setBoardAdd" parameterType="BbsDTO">
+	  	<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+	  		SELECT QNA_SEQ.NEXTVAL FROM DUAL
+	  	</selectKey>
+  		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
+  		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0, 0)
+  	</insert>
+  
+  	<insert id="setReplyAdd" parameterType="QnaDTO">
+  		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
+  		VALUES(QNA_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref}, #{step}, #{depth})
+  	</insert>
+  
+  	<update id="setStepUpdate" parameterType="QnaDTO">
+  		UPDATE QNA SET STEP = STEP + 1
+  		WHERE REF = #{ref} AND STEP > #{step}
+  	</update>
   
   </mapper>
   
