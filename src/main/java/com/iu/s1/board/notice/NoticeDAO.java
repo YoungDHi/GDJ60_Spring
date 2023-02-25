@@ -29,6 +29,8 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
+	
+	
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
