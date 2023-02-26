@@ -50,6 +50,11 @@
   		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
   		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0, 0)
   	</insert>
+  	
+  	<insert id="setFileAdd" parameterType="FileDTO">
+  		INSERT INTO QNAFILES (FILENUM, NUM, FILENAME, ORINAME)
+  		VALUES (FILENUM_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+  	</insert>
   
   	<insert id="setReplyAdd" parameterType="QnaDTO">
   		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)

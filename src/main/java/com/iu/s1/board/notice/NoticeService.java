@@ -39,11 +39,9 @@ public class NoticeService implements BoardService {
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] files) throws Exception {
 		int result = noticeDAO.setBoardAdd(bbsDTO);
-		System.out.println(bbsDTO.getNum());
-		System.out.println(bbsDTO.getContents());
 		if(files.length!=0) {
 			for(MultipartFile file:files) {
-				String realPath = servletContext.getRealPath("resources/upload/board");
+				String realPath = servletContext.getRealPath("resources/upload/notice");
 				System.out.println(realPath);
 				String fileName = fileManager.fileSave(file, realPath);
 				FileDTO fileDTO = new FileDTO();

@@ -12,7 +12,7 @@ public interface BoardDAO extends BbsDAO {
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception;
 
 	//add
-	
+	public int setFileAdd(FileDTO fileDTO) throws Exception;
 	//update
 	
 	//delete

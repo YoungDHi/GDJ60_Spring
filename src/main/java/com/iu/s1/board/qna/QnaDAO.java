@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDAO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.FileDTO;
 import com.iu.s1.util.Pager;
 
 @Repository
@@ -22,6 +23,12 @@ public class QnaDAO implements BoardDAO {
 	public Long getTotalCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
+	}
+
+	@Override
+	public int setFileAdd(FileDTO fileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"setFileAdd", fileDTO);
 	}
 
 	@Override

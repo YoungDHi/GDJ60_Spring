@@ -30,8 +30,10 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
-	
+
+	@Override
 	public int setFileAdd(FileDTO fileDTO) throws Exception {
+		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"setFileAdd", fileDTO);
 	}
 
