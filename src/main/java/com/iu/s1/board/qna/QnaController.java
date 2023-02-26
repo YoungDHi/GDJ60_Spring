@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BbsDTO;
@@ -48,9 +49,9 @@ public class QnaController {
 	}
 	
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO) throws Exception {
+	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile[] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setBoardAdd(qnaDTO);
+		int result = qnaService.setBoardAdd(qnaDTO, files);
 		String message = "등록 실패";
 		if(result >= 1) {
 			message = "글이 등록되었습니다" ;

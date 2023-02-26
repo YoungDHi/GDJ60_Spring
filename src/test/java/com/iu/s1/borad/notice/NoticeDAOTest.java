@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.s1.MyTestCase;
+import com.iu.s1.board.FileDTO;
 import com.iu.s1.board.notice.NoticeDAO;
 import com.iu.s1.board.notice.NoticeDTO;
 import com.iu.s1.util.Pager;
@@ -32,6 +33,16 @@ public class NoticeDAOTest extends MyTestCase {
 		noticeDTO.setContents("Contents1");
 		int result = noticeDAO.setBoardAdd(noticeDTO);
 		assertEquals(1, result);
+	}
+	
+	@Test
+	public void setFileAdd() throws Exception{
+		FileDTO fileDTO = new FileDTO();
+		fileDTO.setFileName("파일이름");
+		fileDTO.setOriName("원본 이름");
+		fileDTO.setNum(226L);
+		int i = noticeDAO.setFileAdd(fileDTO);
+		assertNotEquals(0, i);
 	}
 
 }

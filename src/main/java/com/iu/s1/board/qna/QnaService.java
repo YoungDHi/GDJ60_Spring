@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDTO;
@@ -11,7 +12,7 @@ import com.iu.s1.board.BoardService;
 import com.iu.s1.util.Pager;
 
 @Service
-public class QnaService implements BoardService {
+public class QnaService implements BoardService{
 	
 	@Autowired
 	private QnaDAO qnaDAO;
@@ -26,7 +27,7 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
+	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDAO.setBoardAdd(bbsDTO);
 	}
@@ -77,6 +78,12 @@ public class QnaService implements BoardService {
 		
 		return result;
 		
+	}
+
+	@Override
+	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
