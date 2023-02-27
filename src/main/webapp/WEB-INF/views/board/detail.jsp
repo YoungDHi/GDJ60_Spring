@@ -17,12 +17,28 @@
 		<h3>${dto.writer}</h3>
 		<h3>${dto.contents}</h3>
 		
+		<c:forEach items="${dto.boardFileDTOs}" var="fileDTO">
+			<a href="./fileDown?fileNum = ${fileDTO.fileNum}">${fileDTO.oriName}</a>
+		</c:forEach>
+		
 		<c:if test="${boardName ne 'notice'}">
 			<a href="./reply?num=${dto.num}" class="btn btn-danger">답글</a>
 		</c:if>
+		
+		
+		<div>
+			<form action="./update" id="frm">
+				<input type="hidden" name="num" value="${dto.num}">
+				<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
+				<button id="delete" type="button" class="btn btn-info">DELETE</button>
+			</form>
+		</div>
+		
+		
+		
 	</div>	
 </div>
-
+<script type="text/javascript" src="../resources/js/boardForm.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>

@@ -30,13 +30,14 @@
  			<textarea name="contents" class="form-control" id="contents" rows="7" placeholder="내용을 입력해주세요."></textarea>
 		</div>
 		
-		<!-- <div id="fileList">
-			<div class="mb-3">
-				<label for="files" class="form-label">Image</label>
-				<input type="file" class="form-control" id="files" name="pic">
-			</div>
+		<div id="fileList">
+			<!-- <div class="mb-3">
+				
+				<input type="file" class="form-control" id="files" name="files">
+				<button type="button">X</button>
+			</div> -->
 			<button type="button" id="fileAdd">ADD</button>
-		</div> -->
+		</div>
 		
 		<div class="mt-5">
 			<button class="btn btn-secondary" type="submit">글쓰기</button>
@@ -46,8 +47,8 @@
 </div>
 <script src="../resources/js/fileManager.js"></script>
 <script>
-	setMax(3);
-	setParam('pic');
+	setMax(5);
+	setParam('files');
 </script>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>

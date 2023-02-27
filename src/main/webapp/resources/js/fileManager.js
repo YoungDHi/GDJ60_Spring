@@ -6,7 +6,7 @@ const dels = document.getElementsByClassName('dels');
 let count = 0;
 let max=1;
 let param='pic';
-
+let idx=0;
 function setParam(p){
     param=p
 }
@@ -60,7 +60,7 @@ fileAdd.addEventListener('click', function(){
     div.setAttributeNode(attr);
     
     attr = document.createAttribute('id')
-    attr.value = 'del'+count;
+    attr.value = 'del'+idx;
     div.setAttributeNode(attr);
 
     //label
@@ -100,14 +100,14 @@ fileAdd.addEventListener('click', function(){
     btn.setAttributeNode(attr);
 
     attr = document.createAttribute('data-button-idx');
-    attr.value=count;
+    attr.value=idx;
     btn.setAttributeNode(attr);
 
 
 
     fileList.prepend(div);
     check=true;
-
+    idx++;
     count++;
     
 });

@@ -2,6 +2,8 @@ package com.iu.s1.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s1.util.Pager;
@@ -18,6 +20,6 @@ public interface BbsService {
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception;
 
 	//delete
-	public int setBoardDelete(BbsDTO bbsDTO) throws Exception;
+	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception;
 	
 }

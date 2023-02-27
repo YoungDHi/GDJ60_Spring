@@ -1,6 +1,6 @@
 package com.iu.s1.board;
 
-public class FileDTO {
+public class BoardFileDTO {
 	
 	private Long fileNum;
 	private Long num;

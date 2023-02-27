@@ -34,9 +34,28 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	
-  	<select id="getBoardDetail" parameterType="BoardDTO" resultType="NoticeDTO">
-  		SELECT * FROM NOTICE WHERE NUM = #{num}
+  	<select id="getBoardDetail" parameterType="BoardDTO" resultMap="getBoardDetailResult">
+  		SELECT N.*, NF.*
+		FROM NOTICE N
+			LEFT JOIN
+			NOTICEFILES NF
+			on(N.NUM = NF.NUM)
+		WHERE N.NUM = #{num}
   	</select>
+  	
+  	<resultMap type="NoticeDTO" id="getBoardDetailResult">
+  		<id column="NUM" property="num"/>
+  		<result column="TITLE" property="title"/>
+  		<result column="CONTENTS" property="contents"/>
+  		<result column="WRITER" property="writer"/>
+  		<result column="REGDATE" property="regDate"/>
+  		<result column="HIT" property="hit"/>
+  		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+  			<id column="FILENUM" property="fileNum"/>
+  			<result column="FILENAME" property="fileName"/>
+  			<result column="ORINAME" property="oriName"/>
+  		</collection>
+  	</resultMap>
   	
   	<insert id="setBoardAdd" parameterType="BbsDTO">
   		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
@@ -46,10 +65,18 @@
   		VALUES (#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0)
   	</insert>
   	
-  	<insert id="setFileAdd" parameterType="FileDTO">
+  	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
   		INSERT INTO NOTICEFILES (FILENUM, NUM, FILENAME, ORINAME)
-  		VALUES (FILENUM_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+  		VALUES (NOTICE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
   	</insert>
+  	
+  	<delete id="setBoardDelete" parameterType="BbsDTO">
+  		DELETE NOTICE WHERE NUM = #{num}
+  	</delete>
+  	
+  	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+  		SELECT * FROM NOTICEFILES WHERE NUM = #{num}
+  	</select>
   
   </mapper>
   
