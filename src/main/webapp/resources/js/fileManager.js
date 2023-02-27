@@ -17,11 +17,12 @@ function setMax(m){
 fileList.addEventListener('click',function(e){
     
     if(e.target.classList.contains('dels')){
-        let id = 'del' + e.target.getAttribute('data-button-idx')
-        
-        
-        document.getElementById(id).remove();
-        console.log('delete',id)
+        console.log(e.target.parentNode);
+        e.target.parentNode.remove();
+        // let id = 'del' + e.target.getAttribute('data-button-idx')
+        // document.getElementById(id).remove();
+        // console.log('delete',id)
+        count--;
     }
     
 
@@ -39,16 +40,16 @@ fileAdd.addEventListener('click', function(){
     
     //Element, text 들을 생성
     let div = document.createElement('div');//부모 DIV
-    let label = document.createElement('label');//label
-    let text = document.createTextNode('Image');
+    //let label = document.createElement('label');//label
+    //let text = document.createTextNode('Image');
     let inptut = document.createElement('input');//input
     let btn = document.createElement('button');//button
 
     //Element들을 조합
-    div.appendChild(label);
+    //div.appendChild(label);
     div.appendChild(inptut);
     div.appendChild(btn);
-    label.appendChild(text);
+    //label.appendChild(text);
     text = document.createTextNode('X');
     btn.appendChild(text);
 
@@ -63,13 +64,13 @@ fileAdd.addEventListener('click', function(){
     div.setAttributeNode(attr);
 
     //label
-    attr = document.createAttribute('class');
-    attr.value='form-label';
-    label.setAttributeNode(attr);
+    // attr = document.createAttribute('class');
+    // attr.value='form-label';
+    // label.setAttributeNode(attr);
 
-    attr = document.createAttribute('for');
-    attr.value='files';
-    label.setAttributeNode(attr);
+    // attr = document.createAttribute('for');
+    // attr.value='files';
+    // label.setAttributeNode(attr);
 
 
     //input
@@ -95,7 +96,7 @@ fileAdd.addEventListener('click', function(){
     btn.setAttributeNode(attr);
 
     attr = document.createAttribute('class');
-    attr.value = 'dels';
+    attr.value = 'btn btn-outline-danger dels';
     btn.setAttributeNode(attr);
 
     attr = document.createAttribute('data-button-idx');

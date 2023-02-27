@@ -31,7 +31,7 @@
 		
 		<div id="fileList">
 			<!-- <div class="mb-3">
-				<label for="files" class="form-label">Image</label>
+				
 				<input type="file" class="form-control" id="files" name="files">
 				<button type="button">X</button>
 			</div> -->
