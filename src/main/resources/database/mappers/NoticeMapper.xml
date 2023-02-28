@@ -78,6 +78,10 @@
   		SELECT * FROM NOTICEFILES WHERE NUM = #{num}
   	</select>
   
+  	<select id="getBoardFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+  		SELECT * FROM NOTICEFILES WHERE FILENUM = #{fileNum}
+  	</select>
+  
   </mapper>
   
   

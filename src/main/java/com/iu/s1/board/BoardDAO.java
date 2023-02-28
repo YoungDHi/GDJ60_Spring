@@ -21,5 +21,8 @@ public interface BoardDAO extends BbsDAO {
 	
 	//boardFileList
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO);
+	
+	//boardFileDetail
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO);
 
 }

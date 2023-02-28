@@ -91,5 +91,11 @@ public class NoticeService implements BoardService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) {
+		// TODO Auto-generated method stub
+		return noticeDAO.getBoardFileDetail(boardFileDTO);
+	}
 
 }

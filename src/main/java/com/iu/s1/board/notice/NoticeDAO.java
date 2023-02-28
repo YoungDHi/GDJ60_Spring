@@ -67,6 +67,10 @@ public class NoticeDAO implements BoardDAO {
 		return sqlSession.selectList(NAMESPACE+"getBoardFileList", bbsDTO);
 	}
 
-	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getBoardFileDetail", boardFileDTO);
+	}
 	
 }

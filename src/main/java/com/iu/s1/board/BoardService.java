@@ -9,5 +9,7 @@ public interface BoardService extends BbsService {
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception;
 	
 	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] files, HttpSession session) throws Exception;
+	
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO);
 
 }

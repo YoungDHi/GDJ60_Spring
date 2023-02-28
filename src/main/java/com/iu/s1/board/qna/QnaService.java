@@ -124,4 +124,9 @@ public class QnaService implements BoardService{
 		return 0;
 	}
 
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) {
+		// TODO Auto-generated method stub
+		return qnaDAO.getBoardFileDetail(boardFileDTO);
+	}
 }
