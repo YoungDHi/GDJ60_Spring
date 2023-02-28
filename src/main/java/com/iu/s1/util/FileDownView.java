@@ -23,7 +23,7 @@ public class FileDownView extends AbstractView {
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("FileDownView");
+//		System.out.println("FileDownView");
 		BoardFileDTO boardFileDTO = (BoardFileDTO)model.get("boardFile");
 		
 //		Iterator<String> it = model.keySet().iterator();
