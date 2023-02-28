@@ -34,8 +34,8 @@
 			<div id="pwResult"></div>
 		</div>
 		<div class="mb-3">
-			<label for="pwCheck" class="form-label">비밀번호</label>
-			<input type="password" name="pw" class="form-control" id="pwCheck"><br>
+			<label for="pwCheck" class="form-label">비밀번호확인</label>
+			<input type="password" name="pwCheck" class="form-control" id="pwCheck"><br>
 			<div id="pwCheckResult"></div>
 		</div>
 		<div class="mb-3">

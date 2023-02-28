@@ -53,6 +53,7 @@ public class MemberController {
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public String getMemberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception{
 		memberDTO = memberService.getMemberLogin(memberDTO);
+		
 		if(memberDTO !=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberDTO);

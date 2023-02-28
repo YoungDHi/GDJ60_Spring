@@ -96,11 +96,19 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="row">
-		<a href="./add" class="btn btn-primary">글작성</a>
-	</div>
-	
+	<c:if test="${not empty member}">
+			<c:if test="${boardName eq 'notice' and member.roleDTO.roleName eq 'ADMIN'}">
+				<div class="row">
+					<a href="./add" class="btn btn-primary">글작성</a>
+				</div>
+			</c:if>
+			<c:if test="${boardName ne 'notice'}">
+				<div class="row">
+					<a href="./add" class="btn btn-primary">글작성</a>
+				</div>
+			</c:if>
+			
+	</c:if>
 	<c:import url="../template/common_js.jsp"></c:import>
 	<script src="../resources/js/pageing.js"></script>
 </body>

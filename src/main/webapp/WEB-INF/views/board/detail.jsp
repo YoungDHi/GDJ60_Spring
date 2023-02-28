@@ -25,15 +25,15 @@
 			<a href="./reply?num=${dto.num}" class="btn btn-danger">답글</a>
 		</c:if>
 		
-		
-		<div>
+		<div class="my-5">
 			<form action="./update" id="frm">
 				<input type="hidden" name="num" value="${dto.num}">
-				<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
-				<button id="delete" type="button" class="btn btn-info">DELETE</button>
+				<c:if test="${member.id eq dto.writer or member.roleDTO.roleName eq 'ADMIN'}">
+					<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
+					<button id="delete" type="button" class="btn btn-info">DELETE</button>
+				</c:if>
 			</form>
 		</div>
-		
 		
 		
 	</div>	

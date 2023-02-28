@@ -6,10 +6,30 @@
   	<select id="getMemberList" resultType="MemberDTO">
   		SELECT * FROM MEMBER ORDER BY MEMBERNAME ASC  	
   	</select>
-  	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
-  		SELECT * FROM MEMBER 
-  		WHERE ID=#{id}
+  	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberLoginResult">
+  		SELECT M.*,R.*
+		FROM MEMBER M
+			INNER JOIN
+			MEMBER_ROLE MR
+			ON(M.ID=MR.ID)
+			INNER JOIN
+			ROLE R
+			ON(MR.ROLENUM=R.ROLENUM)
+		WHERE M.ID=#{id}
   	</select>
+  	
+  	<resultMap type="MemberDTO" id="getMemberLoginResult">
+  		<id column="ID" property="id"/>
+  		<result column="PW" property="pw"/>
+  		<result column="MEMBERNAME" property="memberName"/>
+  		<result column="MEMBERPHONE" property="memberPhone"/>
+  		<result column="EMAIL" property="email"/>
+  		<association property="roleDTO" javaType="RoleDTO">
+  			<id column="ROLENUM" property="roleNum"/>
+  			<result column="ROLENAME" property="roleName"/>
+  		</association>
+  	</resultMap>
+  	
   	<insert id="setMemberAdd" parameterType="MemberDTO">
   		INSERT INTO MEMBER 
   		VALUES(#{id}, #{pw}, #{memberName}, #{memberPhone}, #{email})
