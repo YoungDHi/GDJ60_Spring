@@ -12,13 +12,20 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container-fluid">
 	<div class="row md-7">
-		<h1 class="col-md-7 mx-auto text-center border-bottom border-dark pb-4">${boardName} Add Page</h1>
+		<h1 class="col-md-7 mx-auto text-center border-bottom border-dark pb-4">${boardName} Update Page</h1>
 	</div>
 	<div class="row justify-content-center">
 	<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 		<div class="mb-3">
 			<label for="writer" class="form-label">작성자</label>
-			<input name="writer" type="text" class="form-control" id="writer" value="${member.id}" readonly="readonly">
+			<c:choose>
+				<c:when test="${member.roleDTO.roleName eq 'ADMIN'}">
+					<input name="writer" type="text" class="form-control" id="writer" value="ADMIN" readonly="readonly">
+				</c:when>
+				<c:otherwise>
+					<input name="writer" type="text" class="form-control" id="writer" value="${member.id}" readonly="readonly">
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="mb-3">
 			<label for="title" class="form-label">제목</label>

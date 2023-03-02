@@ -28,10 +28,10 @@
 		<div class="my-5">
 			<form action="./update" id="frm">
 				<input type="hidden" name="num" value="${dto.num}">
-				<c:if test="${member.id eq dto.writer or member.roleDTO.roleName eq 'ADMIN'}">
+				<%-- <c:if test="${member.id eq dto.writer or member.roleDTO.roleName eq 'ADMIN'}"> --%>
 					<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
 					<button id="delete" type="button" class="btn btn-info">DELETE</button>
-				</c:if>
+				<%-- </c:if> --%>
 			</form>
 		</div>
 		
