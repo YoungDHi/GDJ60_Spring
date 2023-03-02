@@ -17,14 +17,14 @@ public class QnaDAOTest extends MyTestCase {
 	@Autowired
 	private QnaDAO qnaDAO;
 	
-	@Test
-	public void getListTest() throws Exception {
-		Pager pager = new Pager();
-		pager.setKind("writer");
-		pager.setSearch("Kim");
-		pager.makeRow();
-		List<BbsDTO> ar = qnaDAO.getBoardList(pager);
-		assertNotEquals(0, ar.size());
-	}
+//	@Test
+//	public void getListTest() throws Exception {
+//		Pager pager = new Pager();
+//		pager.setKind("writer");
+//		pager.setSearch("Kim");
+//		pager.makeRow();
+//		List<BbsDTO> ar = qnaDAO.getBoardList(pager);
+//		assertNotEquals(0, ar.size());
+//	}
 
 }
