@@ -32,7 +32,7 @@ public class BankBookCommentService implements BbsService {
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return bankBookCommentDAO.setBoardAdd(bbsDTO);
 	}
 
 	@Override
