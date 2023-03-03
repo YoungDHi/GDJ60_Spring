@@ -28,7 +28,7 @@ public class BankBookCommentController {
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView getBoardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		pager.setPerPage(5L);
 		List<BbsDTO> ar = bankBookCommentService.getBoardList(pager);
 		
 		
