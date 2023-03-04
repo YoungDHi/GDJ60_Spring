@@ -52,11 +52,11 @@
 			<div class="row">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
-						<%-- <li class="page-item">
-							<a class="page-link" href="./list?page=1&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Previous" data-board-page="1">
 								<span aria-hidden="true">&laquo;</span>
 							</a>
-						</li> --%>
+						</li>
 						    
 						<li class="page-item ${pager.before? 'disabled':''}">
 							<a class="page-link" href="#" aria-label="Previous" data-board-page="${pager.startNum-1}">
@@ -72,7 +72,7 @@
 							</a>
 						</li>
 						<li class="page-item">
-							 <a class="page-link" href="./list?page=${pager.totalPage}&kind=${pager.kind}&search=${pager.search}"  aria-label="Next">
+							<a class="page-link" href="#"  aria-label="Next" data-board-page="${pager.totalPage}">
 								<span aria-hidden="true">&raquo;</span>
 							</a>
 						</li>
