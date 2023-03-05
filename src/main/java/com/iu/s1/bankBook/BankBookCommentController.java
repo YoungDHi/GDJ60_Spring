@@ -33,6 +33,7 @@ public class BankBookCommentController {
 		
 		
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("common/commentList");
 		
 		return mv;

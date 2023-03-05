@@ -1,6 +1,7 @@
 const replyContents = document.getElementById('replyContents');
 const replyAdd = document.getElementById('replyAdd');
 const commentListResult = document.getElementById('commentListResult');
+const pl = document.getElementsByClassName('page-link');
 
 replyAdd.addEventListener('click',function(){
 
@@ -44,3 +45,24 @@ function getList(){
 
 }
 
+commentListResult.addEventListener('click', function(e){
+    e.preventDefault();
+    console.log('CurrentTarget : '+e.currentTarget, 'Target : '+e.target);
+    for(let p of pl){
+        
+            
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.open('get', '/bankBookComment/list?page='+p.getAttribute('data-comment-page')+'&bookNumber='+replyAdd.getAttribute('data-book-bookNumber'))
+
+        xhttp.send();
+
+        xhttp.addEventListener('readystatechange', function(){
+            if(this.readyState==4 && this.status==200){
+                commentListResult.innerHTML=this.responseText.trim();
+            }
+        })
+            
+        
+    };
+});
