@@ -5,9 +5,22 @@
 <table class="table table-srtiped">
 	<c:forEach items="${list}" var="dto">
 		<tr>
-			<td>${dto.contents}</td>
+			<td id="contents${dto.num}"><textarea name="" id="" cols="50" rows="1" readonly>${dto.contents}</textarea>
+				
+				<div class="row" id="updateArea"></div>
+			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.regDate}</td>
+			<td>
+				<c:if test="${member.id eq dto.writer}">
+					<button class="btn btn-primary upd" data-comment-num="${dto.num}">UPDATE</button>
+				</c:if>
+				<c:if test="${member.id eq dto.writer}">
+					<!-- <textarea class="form-control" id="replyUpdate" rows="3"></textarea>
+					<button class="btn btn-primary upd" data-update-num="${dto.num}">UPDATE</button> -->
+					<button class="btn btn-danger del" data-comment-num="${dto.num}">DELETE</button>
+				</c:if>
+			</td>
 		</tr>
 	</c:forEach>
 </table>

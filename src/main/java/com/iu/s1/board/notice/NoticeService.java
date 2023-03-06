@@ -93,6 +93,12 @@ public class NoticeService implements BoardService {
 	}
 	
 	@Override
+	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) {
 		// TODO Auto-generated method stub
 		return noticeDAO.getBoardFileDetail(boardFileDTO);
