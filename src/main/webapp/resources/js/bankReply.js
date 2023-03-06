@@ -2,6 +2,10 @@ const replyContents = document.getElementById('replyContents');
 const replyAdd = document.getElementById('replyAdd');
 const commentListResult = document.getElementById('commentListResult');
 
+const contentsConfirm = document.getElementById('contentsConfirm');
+const closModal = document.getElementById('closeModal')
+
+
 
 replyAdd.addEventListener('click',function(){
 
@@ -108,91 +112,16 @@ commentListResult.addEventListener('click', function(e){
 //update를 누르면 textarea가 뜨는 방식
 commentListResult.addEventListener('click', function(e){
     let upd = e.target;
-    
-    
-    
-    // if(upd.classList.contains('update')){
-        //     console.log('click')
-        //     let xhttp= new XMLHttpRequest();
-        //     xhttp.open('POST','../bankBookComment/update');
-        //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //     xhttp.send('contents='+document.getElementById('replyUpdate').value+'&num='+upd.getAttribute('data-update-num'));
-        //     xhttp.addEventListener('readystatechange', function(){
-            //         if(this.readyState==4 && this.status==200){
-                //             let result=this.responseText.trim();
-                //             if(result>=1){
-                    //                 console.log('last')
-                    //                 alert('수정 완료.');
-                    //                 getList(1);
-                    //             } else {
-                        //                 alert('수정 실패');
-                        //             }
-                        //         }
-                        //     })
-                        
-                        // }
-                        
-                        
-    if(upd.classList.contains('upd')){
-
-        // 내용을 textarea로 만들어서 고치는 방법
-        // let num = upd.getAttribute('data-comment-num');
-        // let contents = document.getElementById('contents'+num);
-        // console.log(contents);
-        // document.querySelector("#contents"+num).firstChild.removeAttribute('readonly')
-        // let btn = document.createElement('button');
-        // let attr = document.createAttribute('class');
-        // attr.value='btn btn-info';
-        // btn.setAttributeNode(attr);
-        // contents.appendChild(btn);
-        // attr=document.createTextNode('확인');
-        // btn.appendChild(attr);
-        
-        
-
-
-        // btn.addEventListener('click', function(){
-        //     console.log(contents.firstChild.value);
-        //     console.log(num)
-        //     let xhttp = new XMLHttpRequest();
-        //     xhttp.open('POST', '../bankBookComment/update')
-        //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //     xhttp.send('num='+num+'&contents='+contents.firstChild.value);
-        //     xhttp.addEventListener('readystatechange', function(){
-        //         if(this.readyState==4 && this.status==200){
-        //             let result=this.responseText.trim();
-        //             if(result>0){
-        //                 console.log('last')
-        //                 alert('수정 성공');
-        //                 getList(1);
-        //             } else {
-        //                 alert('수정 실패');
-        //             }
-        //         }
-        //     })
-
-        // })
-
-        //id 태그를 줘서 만들기
-        //contents.innerHTML='<textarea name="" id="" cols="30" rows="3">'+contents.innerHTML+'</textarea>'
-        //console.log(upd.parentNode.previousSibling.previousSibling.previousSibling.previousSibling)
-
-        // 내가 하던거
-        const updateArea = document.getElementById('updateArea');
-        let textarea = document.createElement('textarea');
-        let btn = document.createElement('button');
-        
-        updateArea.appendChild(textarea);
-        updateArea.appendChild(btn);
-        let attr = document.cre
-        text = document.createTextNode('확인');
-        btn.appendChild(text);
-
-
-
+                       
+    if(upd.classList.contains('update')){
 
         
-
+        let num = upd.getAttribute('data-comment-num');
+        let contents = document.getElementById('contents'+num);//td
+        console.log('contents : '+contents);
+        let contentsTextarea = document.getElementById('contents');//modal textarea
+        contentsTextarea.value=contents.innerText;      
+        contentsConfirm.setAttribute('data-comment-num', num);
         
 
         
@@ -234,3 +163,30 @@ commentListResult.addEventListener('click', function(e){
 //         })
 //     }
 // });
+
+contentsConfirm.addEventListener('click', function(){
+    console.log("Update Post");
+    let updateContents = document.getElementById('contents').value;
+    let num = contentsConfirm.getAttribute('data-comment-num');
+    
+    let xhttp = new XMLHttpRequest();
+        xhttp.open('POST','../bankBookComment/update');
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send('num='+num+'&contents='+updateContents)
+        xhttp.addEventListener('readystatechange', function(){
+            if(this.readyState==4 && this.status==200){
+                let result=this.responseText.trim();
+                console.log('first check')
+                if(result>=1){
+                    console.log('last')
+                    alert('수정 성공');
+                    closModal.click();
+                    getList(1);
+                } else {
+                    alert('수정 실패');
+                }
+            }
+        })
+
+})
+
