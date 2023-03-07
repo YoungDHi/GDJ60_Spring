@@ -129,4 +129,10 @@ public class QnaService implements BoardService{
 		// TODO Auto-generated method stub
 		return qnaDAO.getBoardFileDetail(boardFileDTO);
 	}
+
+	@Override
+	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
