@@ -5,7 +5,8 @@
 <table class="table table-srtiped">
 	<c:forEach items="${list}" var="dto">
 		<tr>
-			<td>${dto.contents}</td>
+			<td id="contents${dto.num}">
+				${dto.contents}</td>
 			<td>${dto.writer}</td>
 			<td>${dto.regDate}</td>
 			<td>

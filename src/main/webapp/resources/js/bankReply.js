@@ -3,7 +3,7 @@ const replyAdd = document.getElementById('replyAdd');
 const commentListResult = document.getElementById('commentListResult');
 
 const contentsConfirm = document.getElementById('contentsConfirm');
-const closModal = document.getElementById('closeModal')
+const closeModal = document.getElementById('closeModal')
 
 
 
@@ -118,7 +118,7 @@ commentListResult.addEventListener('click', function(e){
         
         let num = upd.getAttribute('data-comment-num');
         let contents = document.getElementById('contents'+num);//td
-        console.log('contents : '+contents);
+        console.log('contents : '+contents, 'num : '+num);
         let contentsTextarea = document.getElementById('contents');//modal textarea
         contentsTextarea.value=contents.innerText;      
         contentsConfirm.setAttribute('data-comment-num', num);
@@ -168,6 +168,7 @@ contentsConfirm.addEventListener('click', function(){
     console.log("Update Post");
     let updateContents = document.getElementById('contents').value;
     let num = contentsConfirm.getAttribute('data-comment-num');
+    console.log(num)
     
     let xhttp = new XMLHttpRequest();
         xhttp.open('POST','../bankBookComment/update');
@@ -180,7 +181,7 @@ contentsConfirm.addEventListener('click', function(){
                 if(result>=1){
                     console.log('last')
                     alert('수정 성공');
-                    closModal.click();
+                    closeModal.click();
                     getList(1);
                 } else {
                     alert('수정 실패');
