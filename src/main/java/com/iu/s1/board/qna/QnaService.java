@@ -52,7 +52,8 @@ public class QnaService implements BoardService{
 			boardFileDTO.setOriName(file.getOriginalFilename());
 				
 			result = qnaDAO.setBoardFileAdd(boardFileDTO);
-		}	
+		}
+		
 		return result;
 	}
 
@@ -60,6 +61,34 @@ public class QnaService implements BoardService{
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] multipartFiles, HttpSession session, Long [] fileNums)
+			throws Exception {
+		//qna Update
+		int result = qnaDAO.setBoardUpdate(bbsDTO);
+		
+		//qnaFiles Delete
+		for(Long fileNum:fileNums) {
+			qnaDAO.setBoardFileDelete(fileNum);
+		}
+		
+		//qnaFiles Insert
+		String realPath = servletContext.getRealPath("resources/upload/qna/");
+		for(MultipartFile file:multipartFiles) {
+			if(file.isEmpty()) {
+				continue;
+			}
+			String fileName = fileManager.fileSave(file, realPath);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setNum(bbsDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(file.getOriginalFilename());
+				
+			result = qnaDAO.setBoardFileAdd(boardFileDTO);
+		}
+		return result;
 	}
 
 	@Override
@@ -85,6 +114,8 @@ public class QnaService implements BoardService{
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
+		QnaDTO qnaDTO = (QnaDTO)qnaDAO.getBoardDetail(boardDTO);
+//		System.out.println(qnaDTO.getBoardFileDTOs().size());
 		return qnaDAO.getBoardDetail(boardDTO);
 	}
 	

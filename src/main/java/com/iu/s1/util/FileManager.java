@@ -18,6 +18,7 @@ public class FileManager {
 		String name = UUID.randomUUID().toString();
 		
 		name = name+"_"+multipartFile.getOriginalFilename();
+		System.out.println(name);
 		
 		file = new File(file, name);
 		

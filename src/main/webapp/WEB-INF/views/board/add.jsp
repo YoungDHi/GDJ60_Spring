@@ -51,7 +51,7 @@
 	
 	setMax(5);
 	$('#contents').summernote()
-	//setParam('files');
+	setParam('addFiles');
 	
 </script>
 	<c:import url="../template/common_js.jsp"></c:import>
