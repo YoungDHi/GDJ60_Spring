@@ -161,6 +161,11 @@ public class QnaService implements BoardService{
 		// TODO Auto-generated method stub
 		return qnaDAO.getBoardFileDetail(boardFileDTO);
 	}
+	
+	public int setBoardFileDelete(Long fileNum) throws Exception{
+		
+		return qnaDAO.setBoardFileDelete(fileNum);
+	}
 
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
