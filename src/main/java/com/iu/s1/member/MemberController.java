@@ -3,7 +3,9 @@ package com.iu.s1.member;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -41,6 +44,8 @@ public class MemberController {
 		ar = memberService.getMemberList();
 		mv.addObject("list", ar); 
 		
+		
+		
 		return mv;
 	}
 		
@@ -56,19 +61,49 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
-	public void getMemberLogin() {
+	public ModelAndView getMemberLogin(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberLogin");
+		Cookie [] cookies = request.getCookies();
 		
+		for(Cookie cookie:cookies) {
+			System.out.println(cookie.getName());
+			System.out.println(cookie.getValue());
+			System.out.println(cookie.getDomain());
+			System.out.println(cookie.getPath());
+			System.out.println("---------------");
+			if(cookie.getName().equals("rememberId")) {
+				mv.addObject("rememberId", cookie.getValue());
+				break;
+			}
+		}
+		
+		return mv;
 	}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
-	public String getMemberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception{
-		memberDTO = memberService.getMemberLogin(memberDTO);
-		
-		if(memberDTO !=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("member", memberDTO);
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request, String remember, HttpServletResponse response) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		if(remember!=null && remember.equals("remember")) {
+			Cookie cookie = new Cookie("rememberId", memberDTO.getId());
+			cookie.setMaxAge(60*60);//초단위
+			response.addCookie(cookie);
+		}else {
+			Cookie cookie = new Cookie("rememberId","");
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
 		}
-		return "redirect:../";
+		
+//		memberDTO = memberService.getMemberLogin(memberDTO);
+		
+//		if(memberDTO !=null) {
+//			HttpSession session = request.getSession();
+//			session.setAttribute("member", memberDTO);
+//		}
+		
+		mv.setViewName("redirect:../");
+		
+		return mv;
 	}
 	
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)

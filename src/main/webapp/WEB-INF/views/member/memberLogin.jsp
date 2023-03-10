@@ -16,7 +16,7 @@
     		<form style="width: 22rem;" action="./memberLogin" method="post">
 	        	<!-- id input -->
 	        	<div class="form-outline mb-4">
-	        		<input name="id" type="text" id="form2Example1" class="form-control">
+	        		<input name="id" type="text" value="${cookie.rememberId.value}" id="form2Example1" class="form-control">
 					<label class="form-label" for="form2Example1" style="margin-left: 0px;">id</label>
 					<div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div>
 						<div class="form-notch-middle" style="width: 88px;"></div>
@@ -38,8 +38,8 @@
 					<div class="col d-flex justify-content-center">
 	            	<!-- Checkbox -->
 	            		<div class="form-check">
-	              			<input class="form-check-input" type="checkbox" value="" id="form2Example31" checked="">
-	              			<label class="form-check-label" for="form2Example31"> Remember me </label>
+	              			<input class="form-check-input" type="checkbox" name="remember" value="remember" id="form2Example31" checked="">
+	              			<label class="form-check-label" for="form2Example31"> ID 기억하기 </label>
 	            		</div>
 	          		</div>
 	

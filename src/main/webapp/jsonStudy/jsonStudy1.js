@@ -1,10 +1,29 @@
 
 $('#btn').click(()=>{
     let productId=$('#productId').val()
-    $.get('https://dummyjson.com/products/'+productId, (response)=>{
-        console.log(response);
-        console.log(response.title);
+
+    $.ajax({
+        type:'get',
+        url:'https://dummyjson.com/products/'+productId,
+        success:function(response){
+            console.log(response);
+            console.log(typeof response);
+
+            response = JSON.parse(response);
+
+        }
     })
+    // $.get('https://dummyjson.com/products/'+productId, (response)=>{
+    //     console.log(response);
+    //     console.log(response.title);
+    //     alert(response);
+    //     let result = JSON.stringify(response);
+    //     console.log(result);
+    //     alert(result);
+    //     console.log(typeof result);
+    //     console.log(result.title);
+        
+    // })
 })
 
 $.get('https://dummyjson.com/products',function(response){
